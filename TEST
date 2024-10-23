@@ -1,0 +1,16 @@
+<div class="pengumuman">
+    <h3 style="background-color: rgb(25, 25, 79); color: white; padding: 20px; border-radius: 5px; width: 100%;">
+        Pengumuman
+    </h3>
+    <br>
+    <?php if (!empty($pengumuman)): ?>
+        <?php foreach ($pengumuman as $item): ?>
+            <b><a href=""><?php echo $item['judul']; ?></a></b>
+            <br>
+            <p><?php echo $item['isi']; ?></p>
+            <br>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Tidak ada pengumuman saat ini.</p>
+    <?php endif; ?>
+</div>

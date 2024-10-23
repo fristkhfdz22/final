@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.admin-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header .logo a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.admin-container {
+    display: flex;
+}
+
+.admin-sidebar {
+    background-color: #34495e;
+    width: 220px;
+    height: 100vh;
+    transition: all 0.3s ease;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+.admin-sidebar.closed {
+    width: 0;
+    overflow: hidden;
+}
+
+.admin-sidebar nav ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.admin-sidebar nav ul li {
+    margin-bottom: 20px;
+}
+
+.admin-sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-sidebar nav ul li a:hover {
+    background-color: #2980b9;
+}
+
+.admin-content {
+    margin-left: 220px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #ecf0f1;
+    height: 100vh;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.admin-content.expanded {
+    margin-left: 0;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+}
+
+.card-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.card a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.card a:hover {
+    color: #2980b9;
+}
+
+.admin-footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

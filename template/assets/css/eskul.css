@@ -1,0 +1,9 @@
+.card img {
+    height: 200px; /* Tinggi tetap untuk gambar card */
+    object-fit: cover; /* Mengatur gambar agar tidak terdistorsi */
+}
+
+.card {
+    cursor: pointer;
+    flex: 1; /* Membuat card mengisi ruang yang tersedia */
+}
