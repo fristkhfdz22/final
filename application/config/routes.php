@@ -52,11 +52,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['admin'] = 'admin/login'; // Redirect /admin to the login method in Admin controller
 $route['admin/dashboard'] = 'admin/dashboard'; // Route for admin dashboard
 $route['admin/auth'] = 'admin/auth'; // Route for handling authentication (login processing)
-$route['admin/kepalasekolah'] = 'admin/kepalasekolah/kepalasekolah_crud'; 
-$route['ekstrakurikuler'] = 'eskul/index'; // Arahkan URL ke controller Eskul
-$route['ekstrakurikuler/add'] = 'eskul/add'; // Menambah ekstrakurikuler
-$route['ekstrakurikuler/edit/(:num)'] = 'eskul/edit/$1'; // Mengedit ekstrakurikuler
-$route['ekstrakurikuler/delete/(:num)'] = 'eskul/delete/$1'; // Menghapus ekstrakurikuler
+$route['admin/kepalasekolah'] = 'admin/kepalasekolah/kepalasekolah_crud';
+$route['ekstrakurikuler'] = 'ekstrakurikuler/index';
+$route['ekstrakurikuler/tambah'] = 'ekstrakurikuler/tambah';
+$route['ekstrakurikuler/edit/(:num)'] = 'ekstrakurikuler/edit/$1';
+$route['ekstrakurikuler/hapus/(:num)'] = 'ekstrakurikuler/hapus/$1';
+$route['ekstrakurikuler/detail/(:num)'] = 'eskuldetail/index/$1';
+
+
 
 
 

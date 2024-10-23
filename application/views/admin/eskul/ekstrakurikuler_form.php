@@ -1,41 +1,32 @@
 <div class="container">
-    <h2><?= isset($ekstrakurikuler) ? 'Edit' : 'Tambah' ?> Ekstrakurikuler</h2>
-
-    <form action="<?= isset($ekstrakurikuler) ? site_url('ekstrakurikuler/edit/' . $ekstrakurikuler->id) : site_url('ekstrakurikuler/add') ?>" method="post" enctype="multipart/form-data">
+    <h2><?php echo isset($eskul) ? 'Edit' : 'Tambah'; ?> Ekstrakurikuler</h2>
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="nama_ekstra">Nama Ekstrakurikuler</label>
-            <input type="text" name="nama_ekstra" class="form-control" value="<?= isset($ekstrakurikuler) ? $ekstrakurikuler->nama_ekstra : '' ?>" required>
+            <label>Nama Ekstrakurikuler</label>
+            <input type="text" name="nama_ekstra" class="form-control" value="<?php echo isset($eskul) ? $eskul['nama_ekstra'] : ''; ?>" required>
         </div>
-        
         <div class="form-group">
-            <label for="deskripsi">Deskripsi</label>
-            <textarea name="deskripsi" class="form-control" required><?= isset($ekstrakurikuler) ? $ekstrakurikuler->deskripsi : '' ?></textarea>
+            <label>Deskripsi</label>
+            <textarea name="deskripsi" class="form-control" required><?php echo isset($eskul) ? $eskul['deskripsi'] : ''; ?></textarea>
         </div>
-        
         <div class="form-group">
-            <label for="pembimbing">Pembimbing</label>
-            <input type="text" name="pembimbing" class="form-control" value="<?= isset($ekstrakurikuler) ? $ekstrakurikuler->pembimbing : '' ?>">
+            <label>Pembimbing</label>
+            <input type="text" name="pembimbing" class="form-control" value="<?php echo isset($eskul) ? $eskul['pembimbing'] : ''; ?>" required>
         </div>
-
         <div class="form-group">
-            <label for="logo">Logo</label>
+            <label>Logo</label>
             <input type="file" name="logo" class="form-control">
-            <?php if (isset($ekstrakurikuler) && $ekstrakurikuler->logo): ?>
-                <img src="<?= base_url($ekstrakurikuler->logo) ?>" alt="Logo Ekstrakurikuler" style="width: 100px; height: auto; margin-top: 10px;">
-                <input type="hidden" name="existing_logo" value="<?= $ekstrakurikuler->logo ?>">
+            <?php if (isset($eskul) && $eskul['logo']): ?>
+                <p>Logo saat ini: <img src="<?php echo base_url('uploads/ekstrakurikuler/'.$eskul['logo']); ?>" alt="Logo" width="50"></p>
             <?php endif; ?>
         </div>
-
         <div class="form-group">
-            <label for="gambar">Gambar</label>
+            <label>Gambar</label>
             <input type="file" name="gambar" class="form-control">
-            <?php if (isset($ekstrakurikuler) && $ekstrakurikuler->gambar): ?>
-                <img src="<?= base_url($ekstrakurikuler->gambar) ?>" alt="Gambar Ekstrakurikuler" style="width: 100px; height: auto; margin-top: 10px;">
-                <input type="hidden" name="existing_gambar" value="<?= $ekstrakurikuler->gambar ?>">
+            <?php if (isset($eskul) && $eskul['gambar']): ?>
+                <p>Gambar saat ini: <img src="<?php echo base_url('uploads/ekstrakurikuler/'.$eskul['gambar']); ?>" alt="Gambar" width="50"></p>
             <?php endif; ?>
         </div>
-
-        <button type="submit" class="btn btn-success"><?= isset($ekstrakurikuler) ? 'Update' : 'Simpan' ?></button>
-        <a href="<?= site_url('ekstrakurikuler') ?>" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary"><?php echo isset($eskul) ? 'Update' : 'Simpan'; ?></button>
     </form>
 </div>

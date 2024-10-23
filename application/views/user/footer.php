@@ -222,7 +222,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-left">
-                <img src="assets/image/smkn 1 slawi.png" alt="Logo SMK" class="footer-logo">
+                <img src="<?php echo base_url('template/assets/img/smkn 1 slawi.png');?>" alt="Logo SMK" class="footer-logo">
                 <div class="footer-text">
                     <h2>SMK NEGERI 1 SLAWI</h2>
                     <p>Prestasi Adalah Tradisi</p>

@@ -6,44 +6,47 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // Load the models to fetch data
-        $this->load->model('Kepalasekolah_model'); // Load the Kepala Sekolah model
-        $this->load->model('Pengumuman_model'); // Load the Pengumuman model
-        $this->load->model('Berita_model'); // Load the Berita model
-        $this->load->model('Jurusan_model'); // Load the Jurusan model
+        // Memuat model untuk mengambil data
+        $this->load->model('Kepalasekolah_model'); // Memuat model Kepala Sekolah
+        $this->load->model('Pengumuman_model'); // Memuat model Pengumuman
+        $this->load->model('Berita_model'); // Memuat model Berita
+        $this->load->model('Jurusan_model'); // Memuat model Jurusan
+        $this->load->model('Ekstrakurikuler_model'); // Memuat model Ekstrakurikuler
+        $this->load->helper('text'); // Memuat helper text untuk word_limiter
     }
+
     public function index()
     {
-        // Fetch data for Kepala Sekolah
+        // Mengambil data Kepala Sekolah
         $kepalaSekolahEntries = $this->Kepalasekolah_model->get_all();
-    
-        // Ensure the $kepalasekolah variable is always defined
-        if (!empty($kepalaSekolahEntries)) {
-            $data['kepalasekolah'] = $kepalaSekolahEntries[0]; // Get the first entry
-        } else {
-            // Initialize with null or an empty array
-            $data['kepalasekolah'] = null; // Change to null to avoid issues in header
-        }
-    
-        // Fetch all announcements
-        $data['pengumuman'] = $this->Pengumuman_model->get_all(); // Get all pengumuman
-    
-        // Fetch all berita
-        $data['berita'] = $this->Berita_model->get_all_berita(); // Get all berita
-    
-        // Fetch all jurusan
-        $data['jurusan'] = $this->Jurusan_model->get_all_jurusan(); // Get all jurusan
-    
-        // Load the views and pass the data
-        $this->load->view('user/header', $data); // Pass data to header view
-        $this->load->view('user/home', $data); // Pass the data for Kepala Sekolah to home view
-        $this->load->view('user/info', $data);  // Pass the announcements data to info view
-        $this->load->view('user/berita', $data); // Pass the berita data to berita view
-        $this->load->view('user/jurusan', $data); // Pass the jurusan data to jurusan view
-        $this->load->view('user/eskul'); // Pass the ekstrakurikuler data to eskul view
         
-        $this->load->view('user/footer');
+        // Pastikan variabel $kepalasekolah selalu didefinisikan
+        if (!empty($kepalaSekolahEntries)) {
+            $data['kepalasekolah'] = $kepalaSekolahEntries[0]; // Ambil entri pertama
+        } else {
+            // Inisialisasi dengan null untuk menghindari masalah di header
+            $data['kepalasekolah'] = null; // Ganti dengan null
+        }
+
+        // Mengambil semua pengumuman
+        $data['pengumuman'] = $this->Pengumuman_model->get_all(); // Ambil semua pengumuman
+        
+        // Mengambil semua berita
+        $data['berita'] = $this->Berita_model->get_all_berita(); // Ambil semua berita
+        
+        // Mengambil semua jurusan
+        $data['jurusan'] = $this->Jurusan_model->get_all_jurusan(); // Ambil semua jurusan
+        
+        // Mengambil semua ekstrakurikuler
+        $data['ekstrakurikuler'] = $this->Ekstrakurikuler_model->get_all_ekstrakurikuler(); // Memanggil metode yang benar
+        
+        // Memuat tampilan dan mengirimkan data
+        $this->load->view('user/header', $data); // Kirim data ke tampilan header
+        $this->load->view('user/home', $data); // Kirim data untuk tampilan home
+        $this->load->view('user/info', $data);  // Kirim data pengumuman ke tampilan info
+        $this->load->view('user/berita', $data); // Kirim data berita ke tampilan berita
+        $this->load->view('user/jurusan', $data); // Kirim data jurusan ke tampilan jurusan
+        $this->load->view('user/eskul', $data); // Kirim data ekstrakurikuler ke tampilan eskul
+        $this->load->view('user/footer'); // Memuat tampilan footer
     }
-   
-    
 }
