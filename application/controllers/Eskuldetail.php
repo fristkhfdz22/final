@@ -17,10 +17,10 @@ class EskulDetail extends CI_Controller
         if (empty($data['eskul'])) {
             show_404(); // Tampilkan halaman 404 jika data tidak ditemukan
         }
-
+    
         // Muat tampilan detail
         $this->load->view('user/header');
         $this->load->view('user/eskuldetail/eskuldetail', $data);
         $this->load->view('user/footer');
     }
-}
+    }

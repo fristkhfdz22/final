@@ -69,6 +69,13 @@
                         <span>ekstrakurikuler</span>
                     </a>
                 </li>
+                 
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('prestasi'); ?>">
+                        <i class="fas fa-fw fa-bullhorn"></i>
+                        <span>prestasi</span>
+                    </a>
+                </li>
                 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

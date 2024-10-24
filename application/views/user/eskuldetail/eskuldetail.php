@@ -1,29 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sambutan Kepala Sekolah</title>
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>"> <!-- Ganti dengan link CSS yang sesuai -->
 </head>
 <body>
-<div class="container">
-    <h2><?php echo $eskul['nama_ekstra']; ?></h2>
-    <p><strong>Deskripsi:</strong> <?php echo $eskul['deskripsi']; ?></p>
-    <p><strong>Pembimbing:</strong> <?php echo $eskul['pembimbing']; ?></p>
-    <p><strong>Logo:</strong></p>
-    <?php if ($eskul['logo']): ?>
-        <img src="<?php echo base_url('uploads/ekstrakurikuler/'.$eskul['logo']); ?>" alt="Logo" width="100">
-    <?php else: ?>
-        <span>Tidak ada logo</span>
-    <?php endif; ?>
-    <p><strong>Gambar:</strong></p>
-    <?php if ($eskul['gambar']): ?>
-        <img src="<?php echo base_url('uploads/ekstrakurikuler/'.$eskul['gambar']); ?>" alt="Gambar" width="100">
-    <?php else: ?>
-        <span>Tidak ada gambar</span>
-    <?php endif; ?>
-    <a href="<?php echo site_url('ekstrakurikuler'); ?>" class="btn btn-secondary">Kembali</a>
+    <header>
+        <!-- Tambahkan kode header di sini -->
+    </header>
+    <br>
+<br>
+<br>
+<br>
+<div class="containersambutankepalasekolah">
+    <h4 class="home" style="font-size: 20px; margin-top: 4px;">Home</h4>
+    <i class="fa fa-angle-right icon" style="font-size: 20px;"></i>
+    <h4 style="margin-left: 1%; font-size: 20px; margin-top: 4px;">Ekstrakurikuler</h4>
 </div>
+<br>
+<div class="imagepmr">
+    <!-- Gambar Ekstrakurikuler -->
+    <img src="<?= base_url('uploads/ekstrakurikuler/' . $eskul['gambar']); ?>" alt="<?= $eskul['nama_ekstra']; ?>" class="pmr-img" width="50%" style="margin-left: 25%;">
+</div>
+<br>
+<div class="judulsambutan">
+    <!-- Nama Ekstrakurikuler -->
+    <h2><?= $eskul['nama_ekstra']; ?></h2>
+    <div class="underline"></div>
+</div>
+<br>
+<div class="isisambutan">
+    <!-- Deskripsi Ekstrakurikuler -->
+    <p><?= $eskul['deskripsi']; ?></p>
+</div>
+<br>
+<div class="containersambutankepalasekolah">
+    <!-- Pembimbing -->
+    <h4 style="margin-left: 1%; font-size: 20px; margin-top: 4px;">Dibimbing Oleh:</h4>
+    <p><?= $eskul['pembimbing']; ?></p>
+</div>
+<br>
+<br>
+<br>
 
+<footer>
+
+</footer>
 </body>
 </html>

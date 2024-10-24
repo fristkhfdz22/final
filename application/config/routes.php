@@ -58,6 +58,11 @@ $route['ekstrakurikuler/tambah'] = 'ekstrakurikuler/tambah';
 $route['ekstrakurikuler/edit/(:num)'] = 'ekstrakurikuler/edit/$1';
 $route['ekstrakurikuler/hapus/(:num)'] = 'ekstrakurikuler/hapus/$1';
 $route['ekstrakurikuler/detail/(:num)'] = 'eskuldetail/index/$1';
+$route['prestasi'] = 'prestasi/index';                 // Menampilkan daftar prestasi
+$route['prestasi/tambah'] = 'prestasi/tambah';         // Menampilkan form tambah prestasi
+$route['prestasi/edit/(:num)'] = 'prestasi/edit/$1';   // Menampilkan form edit prestasi berdasarkan ID
+$route['prestasi/hapus/(:num)'] = 'prestasi/hapus/$1'; // Hapus prestasi berdasarkan ID
+
 
 
 

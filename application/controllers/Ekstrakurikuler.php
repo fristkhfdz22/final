@@ -18,7 +18,7 @@ class Ekstrakurikuler extends CI_Controller {
     }
 
     private function _upload_file($field_name, $upload_path) {
-        $config['upload_path'] = './uploads/ekstrakurikuler' . $upload_path;
+        $config['upload_path'] = './uploads/ekstrakurikuler';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size'] = 2048; // 2MB max
         $this->upload->initialize($config);

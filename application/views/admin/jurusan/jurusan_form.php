@@ -16,14 +16,14 @@
             <label for="logo">Logo (Upload Image)</label>
             <input type="file" name="logo" class="form-control">
             <?php if (isset($jurusan) && !empty($jurusan['logo'])): ?>
-                <img src="<?php echo base_url('uploads/' . $jurusan['logo']); ?>" width="50">
+                <img src="<?php echo base_url('uploads/jurusan' . $jurusan['logo']); ?>" width="50">
             <?php endif; ?>
         </div>
         <div class="form-group">
             <label for="gambar">Gambar (Upload Image)</label>
             <input type="file" name="gambar" class="form-control">
             <?php if (isset($jurusan) && !empty($jurusan['gambar'])): ?>
-                <img src="<?php echo base_url('uploads/' . $jurusan['gambar']); ?>" width="50">
+                <img src="<?php echo base_url('uploads/jurusan' . $jurusan['gambar']); ?>" width="50">
             <?php endif; ?>
         </div>
         <button type="submit" class="btn btn-success"><?php echo isset($jurusan) ? 'Update' : 'Add'; ?></button>
