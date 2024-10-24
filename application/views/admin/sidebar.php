@@ -36,46 +36,30 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url('berita'); ?>">Berita</a>
                         <a class="collapse-item" href="<?php echo base_url('pengumuman'); ?>">Pengumuman</a>
+                        <a class="collapse-item" href="<?php echo base_url('prestasi'); ?>">prestasi</a>
+
                     </div>
                 </div>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('kepalasekolah'); ?>">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Kepala Sekolah CRUD</span>
-    </a>
-</li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Profile Sekolah</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url('kepalasekolah'); ?>">Kepala Sekolah (Sambutan)</a>
+                        <a class="collapse-item" href="<?php echo base_url('jurusan'); ?>">jurusan</a>
+                        <a class="collapse-item" href="<?php echo base_url('ekstrakurikuler'); ?>">Ekstrakurikuler</a>
+
+                    </div>
+                </div>
+            </li>
 <hr class="sidebar-divider">
-
-
-
-                <hr class="sidebar-divider">
-
-                <hr class="sidebar-divider">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('jurusan'); ?>">
-                        <i class="fas fa-fw fa-bullhorn"></i>
-                        <span>Jurusan</span>
-                    </a>
-                </li>
-                <hr class="sidebar-divider">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('ekstrakurikuler'); ?>">
-                        <i class="fas fa-fw fa-bullhorn"></i>
-                        <span>ekstrakurikuler</span>
-                    </a>
-                </li>
-                 
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('prestasi'); ?>">
-                        <i class="fas fa-fw fa-bullhorn"></i>
-                        <span>prestasi</span>
-                    </a>
-                </li>
                 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

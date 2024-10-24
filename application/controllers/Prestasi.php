@@ -41,6 +41,8 @@ class Prestasi extends CI_Controller {
             $data = [
                 'judul' => $this->input->post('judul'),
                 'deskripsi' => $this->input->post('deskripsi'),
+                'penulis' => $this->input->post('penulis'),
+
                 'tanggal' => $this->input->post('tanggal'),
                 'gambar' => $gambar
             ];
@@ -65,6 +67,8 @@ class Prestasi extends CI_Controller {
             $data_update = [
                 'judul' => $this->input->post('judul'),
                 'deskripsi' => $this->input->post('deskripsi'),
+                'penulis' => $this->input->post('penulis'),
+
                 'tanggal' => $this->input->post('tanggal'),
                 'gambar' => $gambar ?: $data['prestasi']['gambar']
             ];

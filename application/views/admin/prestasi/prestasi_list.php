@@ -36,7 +36,7 @@
                         <td><?= isset($item->tanggal) ? $item->tanggal : 'Tanggal tidak tersedia'; ?></td>
 
                         <!-- Kelas -->
-                        <td><?= isset($item->kelas) ? $item->kelas : 'Kelas tidak tersedia'; ?></td>
+                        <td><?= isset($item->penulis) ? $item->penulis : 'penulis tidak tersedia'; ?></td>
 
                         <!-- Aksi: Edit dan Delete -->
                         <td>

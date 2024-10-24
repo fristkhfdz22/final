@@ -1,5 +1,5 @@
 <?php 
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Jurusan extends CI_Controller {
 
@@ -7,7 +7,7 @@ class Jurusan extends CI_Controller {
         parent::__construct();
         $this->load->model('Jurusan_model');
         $this->load->helper(['form', 'url']);
-        $this->load->library(['form_validation', 'session']);
+        $this->load->library(['form_validation', 'upload', 'session']);
     }
 
     // List all jurusan
@@ -25,16 +25,18 @@ class Jurusan extends CI_Controller {
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         
         if ($this->form_validation->run() === TRUE) {
-            $logo = $this->handle_file_upload('logo');
-            $gambar = $this->handle_file_upload('gambar');
-    
+            $logo = $this->_upload_file('logo', './uploads/jurusan/');
+            $gambar = $this->_upload_file('gambar', './uploads/jurusan/');
+
             $data = [
                 'nama' => $this->input->post('nama'),
                 'deskripsi' => $this->input->post('deskripsi'),
                 'logo' => $logo,
-                'gambar' => $gambar
+                'gambar' => $gambar,
+                'user_id' => $this->session->userdata('user_id'), // Menyimpan ID user
+                'create_at' => date('Y-m-d H:i:s'),
             ];
-    
+
             $this->Jurusan_model->create_jurusan($data);
             $this->session->set_flashdata('success', 'Jurusan berhasil ditambahkan.');
             redirect('admin/jurusan');
@@ -53,22 +55,23 @@ class Jurusan extends CI_Controller {
         if (!$jurusan) {
             show_404(); // Jika jurusan tidak ditemukan
         }
-    
+
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
-    
+
         if ($this->form_validation->run() === TRUE) {
-            // Jika ada file baru, upload dan ganti file lama
-            $logo = $this->handle_file_upload('logo', $jurusan['logo']);
-            $gambar = $this->handle_file_upload('gambar', $jurusan['gambar']);
-    
+            // Upload file dan tetap menggunakan file lama jika tidak ada file baru
+            $logo = $this->_upload_file('logo', './uploads/jurusan/');
+            $gambar = $this->_upload_file('gambar', './uploads/jurusan/');
+
             $data = [
                 'nama' => $this->input->post('nama'),
                 'deskripsi' => $this->input->post('deskripsi'),
-                'logo' => $logo,
-                'gambar' => $gambar
+                'logo' => $logo ?: $jurusan['logo'], // Jika upload gagal, gunakan file lama
+                'gambar' => $gambar ?: $jurusan['gambar'],
+                'update_at' => date('Y-m-d H:i:s'), // Update timestamp
             ];
-    
+
             // Update jurusan
             $this->Jurusan_model->update_jurusan($id, $data);
             $this->session->set_flashdata('success', 'Jurusan berhasil diperbarui.');
@@ -94,23 +97,18 @@ class Jurusan extends CI_Controller {
         }
     }
 
-    // Handle file uploads for logo and gambar
-    private function handle_file_upload($field_name, $current_file = null) {
-        if (!empty($_FILES[$field_name]['name'])) {
-            $config['upload_path'] = './uploads/jurusan/'; // Ubah direktori ke 'uploads/jurusan'
-            $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['file_name'] = time() . '_' . $_FILES[$field_name]['name']; // Optional: Rename file to avoid conflicts
-    
-            $this->load->library('upload', $config);
-    
-            if ($this->upload->do_upload($field_name)) {
-                return $this->upload->data('file_name');
-            } else {
-                $this->session->set_flashdata('error', $this->upload->display_errors());
-                return $current_file; // Jika upload gagal, tetap gunakan file yang ada
-            }
+    // Handle file uploads
+    private function _upload_file($field_name, $upload_path) {
+        $config['upload_path'] = $upload_path;
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = 2048; // 2MB max
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload($field_name)) {
+            return $this->upload->data('file_name');
+        } else {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            return null; // Jika upload gagal
         }
-        return $current_file; // Jika tidak ada file di-upload, kembalikan file yang sudah ada
     }
-    
 }

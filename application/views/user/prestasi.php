@@ -44,7 +44,7 @@
                                                 <h6 class="card-date"><?= isset($item->tanggal) ? htmlspecialchars($item->tanggal) : 'Tanggal Tidak Tersedia'; ?></h6>
                                                 <div class="icon-text">
                                                     <i class="fas fa-user"></i>
-                                                    <span>: <?= isset($item->kelas) ? htmlspecialchars($item->kelas) : 'Kelas Tidak Tersedia'; ?></span>
+                                                    <span>: <?= isset($item->penulis) ? htmlspecialchars($item->penulis) : 'penulis Tidak Tersedia'; ?></span>
                                                 </div>
                                             </div>
                                         </div>

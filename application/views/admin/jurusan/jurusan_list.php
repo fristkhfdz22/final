@@ -1,52 +1,35 @@
-<div class="container">
-    <h1>Daftar Jurusan</h1>
-    <a href="<?= base_url('jurusan/create'); ?>" class="btn btn-primary mb-3">Tambah Jurusan</a>
-
-    <?php if ($this->session->flashdata('success')): ?>
-        <div class="alert alert-success">
-            <?= $this->session->flashdata('success'); ?>
-        </div>
-    <?php endif; ?>
-
-    <?php if ($this->session->flashdata('error')): ?>
-        <div class="alert alert-danger">
-            <?= $this->session->flashdata('error'); ?>
-        </div>
-    <?php endif; ?>
-
-    <table class="table table-bordered">
-        <thead>
+<h1>Daftar Jurusan</h1>
+<a href="<?= site_url('jurusan/create'); ?>" class="btn btn-primary">Tambah Jurusan</a>
+<?php if ($this->session->flashdata('success')): ?>
+    <div class="alert alert-success"><?= $this->session->flashdata('success'); ?></div>
+<?php endif; ?>
+<?php if ($this->session->flashdata('error')): ?>
+    <div class="alert alert-danger"><?= $this->session->flashdata('error'); ?></div>
+<?php endif; ?>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Deskripsi</th>
+            <th>Logo</th>
+            <th>Gambar</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($jurusan as $j): ?>
             <tr>
-                <th>No</th>
-                <th>Nama Jurusan</th>
-                <th>Deskripsi</th>
-                <th>Logo</th>
-                <th>Gambar</th>
-                <th>Aksi</th>
+                <td><?= $j['id']; ?></td>
+                <td><?= $j['nama']; ?></td>
+                <td><?= $j['deskripsi']; ?></td>
+                <td><img src="<?= base_url('uploads/jurusan/' . $j['logo']); ?>" width="50"></td>
+                <td><img src="<?= base_url('uploads/jurusan/' . $j['gambar']); ?>" width="50"></td>
+                <td>
+                    <a href="<?= site_url('admin/jurusan/edit/' . $j['id']); ?>" class="btn btn-warning">Edit</a>
+                    <a href="<?= site_url('admin/jurusan/delete/' . $j['id']); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus jurusan ini?');">Hapus</a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($jurusan as $key => $value): ?>
-                <tr>
-                    <td><?= $key + 1; ?></td>
-                    <td><?= $value['nama']; ?></td>
-                    <td><?= $value['deskripsi']; ?></td>
-                    <td>
-                        <?php if (!empty($value['logo'])): ?>
-                            <img src="<?= base_url('uploads/jurusan' . $value['logo']); ?>" alt="Logo" width="100">
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <?php if (!empty($value['gambar'])): ?>
-                            <img src="<?= base_url('uploads/jurusan' . $value['gambar']); ?>" alt="Gambar" width="100">
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="<?= base_url('admin/jurusan/edit/' . $value['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="<?= base_url('admin/jurusan/delete/' . $value['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus jurusan ini?');">Hapus</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
+        <?php endforeach; ?>
+    </tbody>
+</table>

@@ -10,6 +10,10 @@
             <textarea class="form-control" id="deskripsi" name="deskripsi" required><?= isset($prestasi) ? $prestasi['deskripsi'] : ''; ?></textarea>
         </div>
         <div class="mb-3">
+            <label for="penulis" class="form-label">penulis</label>
+            <input type="text" class="form-control" id="penulis" name="penulis" value="<?= isset($prestasi) ? $prestasi['penulis'] : ''; ?>" required>
+        </div>
+        <div class="mb-3">
             <label for="tanggal" class="form-label">Tanggal</label>
             <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= isset($prestasi) ? $prestasi['tanggal'] : ''; ?>" required>
         </div>
