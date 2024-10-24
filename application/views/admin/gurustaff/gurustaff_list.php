@@ -1,31 +1,44 @@
-<h1>Daftar Guru/Staff</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Guru & Staff</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
+</head>
+<body>
 
-<?php if ($this->session->flashdata('success')): ?>
-    <p><?= $this->session->flashdata('success'); ?></p>
-<?php endif; ?>
+<div class="container">
+    <h2>Daftar Guru & Staff</h2>
+    <a href="<?= site_url('gurustaff/create') ?>" class="btn btn-primary">Tambah Guru/Staff</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Gambar</th>
+                <th>Jabatan</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($gurustaff as $gs): ?>
+            <tr>
+                <td><?= $gs['id'] ?></td>
+                <td><?= $gs['nama'] ?></td>
+                <td>
+                    <img src="<?= base_url('uploads/gurustaff/' . $gs['gambar']) ?>" width="100" alt="Gambar">
+                </td>
+                <td><?= $gs['jabatan'] ?></td>
+                <td>
+                    <a href="<?= site_url('gurustaff/edit/' . $gs['id']) ?>" class="btn btn-warning">Edit</a>
+                    <a href="<?= site_url('gurustaff/delete/' . $gs['id']) ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
-<a href="<?= site_url('gurustaff/tambah'); ?>">Tambah Guru/Staff</a>
-
-<table>
-    <tr>
-        <th>Nama</th>
-        <th>Jabatan</th>
-        <th>Gambar</th>
-        <th>Aksi</th>
-    </tr>
-    <?php foreach ($gurustaff as $staff): ?>
-        <tr>
-            <td><?= $staff['nama']; ?></td>
-            <td><?= $staff['jabatan']; ?></td>
-            <td>
-                <?php if ($staff['gambar']): ?>
-                    <img src="<?= base_url('uploads/gurustaff/' . $staff['gambar']); ?>" width="100" alt="Gambar">
-                <?php endif; ?>
-            </td>
-            <td>
-                <a href="<?= site_url('gurustaff/edit/' . $staff['id']); ?>">Edit</a>
-                <a href="<?= site_url('gurustaff/delete/' . $staff['id']); ?>" onclick="return confirm('Are you sure?')">Hapus</a>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
+<script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
+</body>
+</html>

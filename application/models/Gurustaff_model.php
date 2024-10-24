@@ -1,36 +1,34 @@
-<?php 
+<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Gurustaff_model extends CI_Model {
-
-    public function __construct() {
-        parent::__construct();
+class Gurustaff_model extends CI_Model
+{
+    // Mendapatkan semua data guru dan staff
+    public function get_all()
+    {
+        $query = $this->db->get('gurustaff'); // Mengambil data dari tabel gurustaff
+        return $query->result_array(); // Mengembalikan hasil sebagai array
+    }
+    public function get_by_id($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('gurustaff');
+        return $query->row(); // Mengembalikan satu baris data
     }
 
-    // Menambahkan data guru/staff
-    public function create_gurustaff($data) {
+    // Metode lain yang mungkin Anda butuhkan
+    public function create($data)
+    {
         return $this->db->insert('gurustaff', $data);
     }
 
-    // Mendapatkan semua data guru/staff
-    public function get_all_gurustaff() {
-        return $this->db->get('gurustaff')->result_array();
-    }
-
-    // Mendapatkan data guru/staff berdasarkan ID
-    public function get_gurustaff($id) {
-        return $this->db->get_where('gurustaff', ['id' => $id])->row_array();
-    }
-
-    // Mengupdate data guru/staff
-    public function update_gurustaff($id, $data) {
+    public function update($id, $data)
+    {
         $this->db->where('id', $id);
         return $this->db->update('gurustaff', $data);
     }
 
-    // Menghapus data guru/staff
-    public function delete_gurustaff($id) {
-        $this->db->where('id', $id);
-        return $this->db->delete('gurustaff');
+    public function delete($id)
+    {
+        return $this->db->delete('gurustaff', array('id' => $id));
     }
 }

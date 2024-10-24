@@ -1,57 +1,61 @@
-<br>
-<br>
-
-<!-- guru & pendidik -->
-
 <style>
     .card img {
-height: 2000%; /* Tinggi tetap untuk gambar card */
-object-fit: cover; /* Mengatur gambar agar tidak terdistorsi */
-}
+        height: 200px; /* Tinggi tetap untuk gambar card */
+        object-fit: cover; /* Mengatur gambar agar tidak terdistorsi */
+    }
 
-.card {
-cursor: pointer;
-flex: 1; /* Membuat card mengisi ruang yang tersedia */
-}
+    .card {
+        cursor: pointer;
+        flex: 1; /* Membuat card mengisi ruang yang tersedia */
+    }
+</style>
 
- </style>
 <div class="judul" style="color: black;">
     <h1>Guru dan Tenaga Kependidikan</h1>
     <div class="underline"></div>
 </div>
- <br>
+<br>
 
 <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="false">
-<div class="carousel-inner" id="prestasi">
-    <div class="carousel-item active">
-        <div class="d-flex">
-    
-            <div class="col-4 p-2">
-                <div class="card">
-                    
-                    <div class="card-body">
-                        <div class="img">
-                            <img src="<?= base_url('uploads/gurustaff/' . $staff->gambar) ?>" alt="" width="50%" height="50%" style="margin-left: 25%; border: 3px solid grey; border-radius: 3px;">
-                            <br>
-                            <br>
-                            <h4 style="margin-left: 15%;"><?= $staff->nama ?></h4>
-                            <h6 style="margin-left: 35%;"><?= $staff->jabatan ?></h6>
-                           </div>
+    <div class="carousel-inner" id="prestasi">
+        <?php if (!empty($gurustaff)) : ?>
+            <?php foreach ($gurustaff as $index => $staff) : ?>
+                <?php if ($index % 3 == 0) : ?>
+                    <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                        <div class="d-flex">
+                <?php endif; ?>
+                
+                <div class="col-4 p-2">
+                    <div class="card">
+                        <div class="card-body" style="height: 100%;">
+                            <div class="img">
+                                <img src="<?= base_url('uploads/gurustaff/' . $staff['gambar']) ?>" alt="" width="50%" height="50%" style="margin-left: 25%; border: 3px solid grey; border-radius: 3px;">
+                                <br>
+                                <br>
+                                <h4 style="margin-left: 15%;"><?= $staff['nama'] ?></h4>
+                                <h6 style="margin-left: 35%;"><?= $staff['jabatan'] ?></h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        
-        </div>
+
+                <?php if ($index % 3 == 2 || $index == count($gurustaff) - 1) : ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>Tidak ada data guru dan staff yang tersedia.</p>
+        <?php endif; ?>
     </div>
-</div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-</button>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
 
@@ -161,3 +165,9 @@ flex: 1; /* Membuat card mengisi ruang yang tersedia */
     
     <br>
     <br>
+
+    <!-- guru and staff end -->
+      
+
+
+
