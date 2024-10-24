@@ -13,6 +13,8 @@ class User extends CI_Controller
         $this->load->model('Jurusan_model'); // Memuat model Jurusan
         $this->load->model('Ekstrakurikuler_model'); // Memuat model Ekstrakurikuler
         $this->load->model('Prestasi_model'); // Memuat model Ekstrakurikuler
+        $this->load->model('Gurustaff_model'); // Memuat model Ekstrakurikuler
+
 
         $this->load->helper('text'); // Memuat helper text untuk word_limiter
     }
@@ -42,6 +44,8 @@ class User extends CI_Controller
         // Mengambil semua ekstrakurikuler
         $data['ekstrakurikuler'] = $this->Ekstrakurikuler_model->get_all_ekstrakurikuler(); // Memanggil metode yang benar
         $data['prestasi'] = $this->Prestasi_model->get_all_prestasi(); // pastikan ini mengembalikan array objek
+        $data['gurustaff'] = $this->Gurustaff_model->get_all_gurustaff(); // pastikan ini mengembalikan array objek
+
         
         // Memuat tampilan dan mengirimkan data
         $this->load->view('user/header', $data); // Kirim data ke tampilan header
@@ -51,6 +55,8 @@ class User extends CI_Controller
         $this->load->view('user/jurusan', $data); // Kirim data jurusan ke tampilan jurusan
         $this->load->view('user/eskul', $data); // Kirim data ekstrakurikuler ke tampilan eskul
         $this->load->view('user/prestasi', $data); // Kirim data ekstrakurikuler ke tampilan eskul
+        $this->load->view('user/gurustaff', $data); // Kirim data ekstrakurikuler ke tampilan eskul
+
 
         $this->load->view('user/footer'); // Memuat tampilan footer
     }

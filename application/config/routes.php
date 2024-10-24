@@ -62,6 +62,10 @@ $route['prestasi'] = 'prestasi/index';                 // Menampilkan daftar pre
 $route['prestasi/tambah'] = 'prestasi/tambah';         // Menampilkan form tambah prestasi
 $route['prestasi/edit/(:num)'] = 'prestasi/edit/$1';   // Menampilkan form edit prestasi berdasarkan ID
 $route['prestasi/hapus/(:num)'] = 'prestasi/hapus/$1'; // Hapus prestasi berdasarkan ID
+$route['gurustaff'] = 'Gurustaff/index';      // Untuk list guru/staff
+$route['gurustaff/tambah'] = 'Gurustaff/tambah';  // Untuk tambah data guru/staff
+$route['gurustaff/edit/(:num)'] = 'Gurustaff/edit/$1';  // Untuk edit data guru/staff berdasarkan ID
+$route['gurustaff/hapus/(:num)'] = 'Gurustaff/hapus/$1';  // Untuk hapus data guru/staff berdasarkan ID
 
 
 

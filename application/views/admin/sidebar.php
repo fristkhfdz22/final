@@ -55,6 +55,8 @@
                         <a class="collapse-item" href="<?= base_url('kepalasekolah'); ?>">Kepala Sekolah (Sambutan)</a>
                         <a class="collapse-item" href="<?php echo base_url('jurusan'); ?>">jurusan</a>
                         <a class="collapse-item" href="<?php echo base_url('ekstrakurikuler'); ?>">Ekstrakurikuler</a>
+                        <a class="collapse-item" href="<?php echo base_url('gurustaff'); ?>">Gurustaff</a>
+
 
                     </div>
                 </div>
